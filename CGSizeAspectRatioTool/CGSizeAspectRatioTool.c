@@ -28,7 +28,10 @@ CGSize CGSizeMakeWithAspectRatioScaledToMaxSize(CGSize aspectRatio,CGSize maxSiz
     CGFloat aspectRatioWidth = aspectRatio.width;
     CGFloat aspectRatioHeight = aspectRatio.height;
     
-    CGFloat scaleFactor = (aspectRatioWidth > aspectRatioHeight) ? maxSize.width / aspectRatioWidth : maxSize.height / aspectRatioHeight;
+    CGFloat widthScaleFactor = maxSize.width / aspectRatioWidth;
+    CGFloat heightScaleFactor = maxSize.height / aspectRatioHeight;
+    
+    CGFloat scaleFactor = widthScaleFactor < heightScaleFactor ? widthScaleFactor : heightScaleFactor;
     
     CGFloat newHeight = aspectRatioHeight * scaleFactor;
     CGFloat newWidth = aspectRatioWidth * scaleFactor;
